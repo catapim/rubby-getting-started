@@ -1,42 +1,110 @@
 <div class="jumbotron text-center">
   <div class="container">
+      
     <a href="/" class="lang-logo">
-      <img src="<%= asset_path('lang-logo.png') %>">
+      <img src="<%= asset_path('avispatech-white-honey.png') %>" style="width: 25%">
     </a>
-    <h1>Getting Started with Ruby on Heroku</h1>
-    <p>This is a sample Ruby application deployed to Heroku. It's a reasonably simple app - but a good foundation for understanding how to get the most out of the Heroku platform.</p>
-    <a type="button" class="btn btn-lg btn-default" href="https://devcenter.heroku.com/articles/getting-started-with-ruby"><span class="glyphicon glyphicon-flash"></span> Getting Started with Ruby</a>
-    <a type="button" class="btn btn-lg btn-primary" href="https://github.com/heroku/ruby-getting-started"><span class="glyphicon glyphicon-download"></span> Source on GitHub</a>
+    <h1 class="display-4">Avispa<strong>Tech</strong>: Stage II</h1>
+    <p>Esta es una aplicación para que demuestres tus conocimientos.</p>
+    <p>Tiene preguntas muy específicas, no te desvíes de lo solicitado.</p>
+    
   </div>
 </div>
+
 <div class="container">
-  <div class="alert alert-info text-center" role="alert">
-    To deploy your own copy, and learn the fundamentals of the Heroku platform, head over to the <a href="https://devcenter.heroku.com/articles/getting-started-with-ruby" class="alert-link">Getting Started with Ruby on Heroku</a> tutorial.
+  <div class="alert alert-warning text-center" role="alert">
+    Ten cuidado de hacer esta entrega de manera privada. Esto debería funcionar directamente en la consola de quién la baja.
   </div>
   <hr>
-  <div class="row">
-    <div class="col-md-6">
-      <h3><span class="glyphicon glyphicon-info-sign"></span> How this sample app works</h3>
+  <div class="row my-5">
+    <div class="col-6">
+      <h3>Contexto</h3>
+      <p>Te damos unas recomendaciones para que no hagas cosas que no consideramos como válidas para el proyecto y tu evaluación</p>
       <ul>
-        <li>This app was deployed to Heroku, either using Git or by using <a href="https://github.com/heroku/ruby-getting-started">Heroku Button</a> on the repository.</li>
+        <li>Este es un proyecto Ruby on Rails, se debe quedar así</li>
+        <li>Esto se conecta a Postgres. </li>
+        <li>Se usa <a href="getboostrap.com">Bootstrap, estilos sueltos son mal vistos.</a></li>
+        <li>La solución puede estar hecha en cualquier lenguaje dentro del proyecto, puede ser Ruby, JS, TS, pero que siga corriendo en el servidor</li>
+        <li>Las vistas que hagas <strong>deben estar en Slim</strong>, no HTML, no ERB, no Jade.</li>
+      </ul>
 
-        <li>When Heroku received the source code, it fetched all the dependencies in the <a href="https://github.com/heroku/ruby-getting-started/blob/master/Gemfile">Gemfile</a>, creating a deployable slug.</li>
-        <li>The platform then spins up a dyno, a lightweight container that provides an isolated environment in which the slug can be mounted and executed.</li>
-        <li>You can scale your app, manage it, and deploy over <a href="https://addons.heroku.com/">150 add-on services</a>, from the Dashboard or CLI.</li>
-      </ul>
     </div>
+    
     <div class="col-md-6">
-      <h3><span class="glyphicon glyphicon-link"></span> Next Steps</h3>
+      <h3><span class="glyphicon glyphicon-info-sign"></span>¿Cómo abriremos este proyecto?</h3>
       <ul>
-        <li>If you are following the <a href="https://devcenter.heroku.com/articles/getting-started-with-ruby">Getting Started</a> guide, then please head back to the tutorial and follow the next steps!</li>
-        <li>If you deployed this app by deploying the Heroku Button, then in a command line shell, run:</li>
-        <ul>
-          <li><code>git clone https://github.com/heroku/ruby-getting-started.git</code> - this will create a local copy of the source code for the app</li>
-          <li><code>cd ruby-getting-started</code> - change directory into the local source code repository</li>
-          <li><code>heroku git:remote -a &lt;your-app-name></code> - associate the Heroku app with the repository</li>
-          <li>You'll now be set up to run the app locally, or <a href="https://devcenter.heroku.com/articles/getting-started-with-ruby#push-local-changes">deploy changes</a> to Heroku</li>
-        </ul>
+        <li>Bajaremos el código y lo descomprimiremos</li>
+        <li>Levantaremos una base de datos en <strong>Postgres</strong></li> 
+        <li>Haremos <code>bundle</code>, <code>rake db:setup</code>, <code>heroku local</code></li>
+        <li>Entraremos a <code>localhost:5000</code></li>
       </ul>
+      
+    </div>
+  </div>
+  <hr>
+  <div class="row my-5">
+    <div class="col-12 mb-3">
+      <h2>Objetivos</h2>
+    </div>
+    <div class="col-6">
+      <h3>1. Estilos</h3>
+      <p>Coloca estilo en la vista de detalle de widget (<code>/widgets/ID/</code>) para que la información se vea como la imagen lateral.</p>
+      <div class="alert alert-info mt-4">
+        <strong>Protip:</strong> Ya estás usando Bootstrap 4.1.3
+      </div>
+    </div>
+    
+    <div class="col-6">
+      <img class="img-fluid" src="<%= asset_path('example-1.png') %>"  />
+    </div>
+  </div>
+  <div class="row my-5">
+    <div class="col-6">
+      <img class="img-fluid" src="<%= asset_path('example-2.png') %>"  />
+    </div>
+    <div class="col-6">
+      <h3>2. MVC y Navegación en Modelos</h3>
+      <p>Existe un objeto de historial de movimientos de stock de cada widget.</p>
+      <p> Necesitamos ver un listado del historial de más reciente a más antiguo, <strong>con paginación</strong> 
+          que muestre datos importantes del movimiento, como en el ejemplo lateral.
+      </p>
+      <p>Los datos que se deben mostrar son:</p>
+      <ul>
+        <li>Nombre de la acción, si es Sell o Purchase.</li>
+        <li>Hace cuánto sucedió la transacción.</li>
+        <li>Cuantos items se agregaron/vendieron</li>
+        <li>El nombre de quién hizo la operación.</li>
+        <li>Ranking, con respecto a sus pares que tiene el usuario respecto a la cantidad de transacciones que ha hecho</li>
+      </ul>
+
+      <div class="alert alert-info mt-4">
+        <strong>Protip:</strong> Kaminari ya está instalado.
+      </div>
+    </div>
+  </div>
+  <div class="row my-5">
+    <div class="col-6">
+      <h3>3. Modelamiento de Procesos</h3>
+      <p>Esta es más difícil, revisa el siguiente código que está pensando para AASM 
+         <strong>más lo que entendiste en las relaciones que tiene el modelo</strong> 
+         y genera un documento BPM en base a sus transiciones.
+      </p>
+      <p>
+        El proceso debe considerar la creación de un widget, su primera stockeada, 
+        luego una venta y luego su cierre.
+      </p>
+      <p>Te recomendamos lo hagas en Cawemo. Este documento va adjunto como PDF en un correo que nos envíes.</p>
+    </div>
+  
+    <div class="col-6">
+      <img class="img-fluid" src="<%= asset_path('example-3.png') %>"  />
+    </div>
+  </div>
+  
+  <hr>
+  <div class="row">
+    
+    <div class="col-md-6">
       <h3><span class="glyphicon glyphicon-link"></span> Helpful Links</h3>
       <ul>
         <li><a href="https://www.heroku.com/home">Heroku</a></li>
@@ -49,5 +117,11 @@
   </div> <!-- row -->
    <div class="alert alert-info text-center" role="alert">
     Please do work through the Getting Started guide, even if you do know how to build such an application.  The guide covers the basics of working with Heroku, and will familiarize you with all the concepts you need in order to build and deploy your own apps.
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <a href="/widgets" class="btn btn-lg btn-primary btn-block">Ir a ver widgets</a>
+    </div>
   </div>
 </div>

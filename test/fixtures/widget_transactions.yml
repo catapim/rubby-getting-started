@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  widget: one
+  operation: MyString
+  amount: 1
+  incumbent_type: MyString
+  incumbent_id: 1
+
+two:
+  widget: two
+  operation: MyString
+  amount: 1
+  incumbent_type: MyString
+  incumbent_id: 1

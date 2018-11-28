@@ -1,0 +1,25 @@
+h3 Activity Log
+.list-group
+  - txs.each do |tx|
+    a.list-group-item.list-group-item-action.flex-column.align-items-start[href='#']
+      .d-flex.w-100.justify-content-between
+        h4= tx.operation == 'sell' ? 'Sell' : 'Purchase'
+        small.text-muted= time_ago_in_words(tx.created_at)
+      .d-flex.w-100.justify-content-between
+        p.lead
+          strong #{tx.incumbent.name} (#{tx.incumbent.ranking} #{tx.incumbent.ranking.ordinal})
+        p Amount: #{tx.amount}
+
+.row
+  .col-12.text-center
+    = paginate(txs)
+
+
+- widget.transactions.historical.each do |tx|
+  .transaction-card
+    p= tx.created_at
+    p= tx.operation
+    p= tx.amount
+    p= tx.incumbent.name
+
+

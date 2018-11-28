@@ -10,6 +10,7 @@ class WidgetsController < ApplicationController
   # GET /widgets/1
   # GET /widgets/1.json
   def show
+    @txs = @widget.transactions.historical.page(params[:page]).per(5)
   end
 
   # GET /widgets/new

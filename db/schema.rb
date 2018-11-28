@@ -10,17 +10,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140707111715) do
+ActiveRecord::Schema.define(version: 20181120205444) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "widgets", force: :cascade do |t|
+  create_table "clients", force: :cascade do |t|
     t.string "name"
-    t.text "description"
-    t.integer "stock"
+    t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "operators", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "widget_transactions", force: :cascade do |t|
+    t.bigint "widget_id"
+    t.string "operation"
+    t.integer "amount"
+    t.string "incumbent_type"
+    t.integer "incumbent_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["widget_id"], name: "index_widget_transactions_on_widget_id"
+  end
+
+  create_table "widgets", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "sku"
+    t.integer "stock"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "aasm_state"
+  end
+
+  add_foreign_key "widget_transactions", "widgets"
 end

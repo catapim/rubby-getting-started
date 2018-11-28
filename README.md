@@ -1,8 +1,15 @@
-# ruby-getting-started
+# Test AvispaTech Stage II
 
-A barebones Rails app, which can easily be deployed to Heroku.
+Esta es una aplicación de Rails sacada de ruby-getting-started.
 
-This application supports the [Getting Started on Heroku with Ruby](https://devcenter.heroku.com/articles/getting-started-with-ruby) article - check it out.
+Debes clonar esta aplicación y echarla a andar. Dentro están las instrucciones, son 3 partes. No debería tomarte más de 1.5 horas por ítem. Lee la documentación.
+
+Mediremos aquí tu conocimiento de git, de ruby y de rails.
+
+Te recomendamos que busques RVM.io
+
+Hay una parte que requiere enviar un PDF 
+
 
 ## Running Locally
 
@@ -31,34 +38,6 @@ or
 
 [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
-## Docker
-
-The app can be run and tested using the [Heroku Docker CLI plugin](https://devcenter.heroku.com/articles/local-development-with-docker-compose).
-
-Make sure the plugin is installed:
-
-    heroku plugins:install heroku-docker
-
-Configure Docker and Docker Compose:
-
-    heroku docker:init
-
-And run the app locally:
-
-    docker-compose up web
-
-The app will now be available on the Docker daemon IP on port 8080.
-
-To work with the local database and do migrations, you can open a shell:
-
-    docker-compose run shell
-    bundle exec rake db:migrate
-
-You can also use Docker to release to Heroku:
-
-    heroku create
-    heroku docker:release
-    heroku open
 
 ## Documentation
 
